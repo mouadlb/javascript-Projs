@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Clé pour le titre de la page -->
+        <title data-translate-key="pageTitle">Mouad Guarraz - Portfolio de Projets JS</title>
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="../style.css">
+        <!-- Optionnel: Google Fonts pour un look plus moderne -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+        <style>
+            #chrono {
+                display: block;
+                max-width: 600px;
+                margin: 50px auto;
+                padding: 40px 20px;
+                background-color: #343a40;
+                border-radius: 15px;
+                text-align: center;
+                box-shadow: 0 0 15px rgba(0, 123, 255, 0.4),
+                            0 5px 20px rgba(0, 0, 0, 0.3);
+                border: 1px solid rgba(255, 255, 255, 0.1);
+            }
+
+            #chrono #time {
+                font-size: 5rem;
+                font-weight: 600;
+                color: #e9ecef;
+                margin-bottom: 30px;
+                letter-spacing: 3px;
+                text-shadow: 0 0 8px rgba(255, 255, 255, 0.7),
+                            0 0 12px rgba(52, 152, 219, 0.6),
+                            0 0 18px rgba(52, 152, 219, 0.4);
+            }
+
+            #chrono button {
+                margin: 0 10px;
+                padding: 12px 25px;
+                font-size: 1.1rem;
+                border: none;
+                border-radius: 8px;
+                transition: all 0.3s ease;
+                box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            }
+
+            #chrono button:hover,
+            #chrono button:focus {
+                transform: translateY(-3px);
+                outline: none;
+            }
+
+            #chrono button.btn-primary:hover,
+            #chrono button.btn-primary:focus {
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3),
+                            0 0 12px rgba(0, 123, 255, 0.7),
+                            0 0 18px rgba(0, 123, 255, 0.5);
+            }
+
+            #chrono button.btn-danger:hover,
+            #chrono button.btn-danger:focus {
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3),
+                            0 0 12px rgba(220, 53, 69, 0.7),
+                            0 0 18px rgba(220, 53, 69, 0.5);
+            }
+
+            #chrono button.btn-warning:hover,
+            #chrono button.btn-warning:focus {
+                box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3),
+                            0 0 12px rgba(255, 193, 7, 0.8),
+                            0 0 18px rgba(255, 193, 7, 0.6);
+                color: #111;
+            }
+
+            #proj2-h1 h1 {
+                margin-bottom: 40px;
+                color: #343a40;
+            }
+
+        </style>
+    </head>
+<body>
+    <div id="pageLoader" class="page-loader-overlay">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </div>
+    </div>
+
+    <!-- ==================== Navbar ==================== -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top shadow-sm main-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="../index.html">Mouad Guarraz</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="../index.html#about" data-translate-key="navAbout">À Propos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../tp.html" data-translate-key="navTpDom">TP DOM</a> 
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="docs/Manipulation du DOM en JavaScript.pdf" data-translate-key="navDocs">Cours</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="../index.html#projects" data-translate-key="navProjects">Mes projets</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid" id="proj2-h1">
+        <h1 style="text-align: center; margin-top: 100px;"> Projet 2 : Chronometre</h1>
+    </div>
+    <div id="chrono">
+        <p id="time">00:00:00</p>
+        <button onclick="startTimer()" class="btn btn-primary">Start</button>
+        <button onclick="stopTimer()" class="btn btn-danger">stop</button>
+        <button onclick="resetTimer()" class="btn btn-warning">reset</button>
+    </div>
+    <div class="container">
+        <div class="text-center mb-4">
+            <a href="projet1.html" class="btn btn-danger me-2" data-translate-key="nextProjectBtn">
+               <i class="bi bi-arrow-left-circle"></i> Projet précedent 
+            <!-- Bouton Voir l'énoncé (adapte le #projetX) -->
+            <a href="../tp.html#projet2" class="btn btn-outline-info me-2" data-translate-key="viewInstructionsBtn">
+                <i class="bi bi-journal-text"></i> Voir l'énoncé (TP)
+            </a>
+            <!-- Bouton Projet Suivant (adapte le href) -->
+            <a href="projet3.html" class="btn btn-success" data-translate-key="nextProjectBtn">
+                Projet Suivant <i class="bi bi-arrow-right-circle"></i>
+            </a>
+        </div>
+    </div>
+
+    <footer class="bg-dark text-white text-center py-3 mt-auto">
+        <div class="container">
+            <p class="mb-0">&copy; 2024 Mouad Guarraz - Projet 2</p>
+        </div>
+    </footer>
+    <script>
+        let heures = 0;
+        let minutes = 0;
+        let secondes = 0;
+        let intervale = null;
+
+        const affichTemps = document.getElementById("time")
+
+        function affichageFormatTemps(){
+            let h = heures < 10 ? "0" + heures : heures;
+            let m = minutes < 10 ? "0" + minutes : minutes;
+            let s = secondes < 10 ? "0" + secondes : secondes;
+            affichTemps.textContent = `${h} : ${m} : ${s}`;
+        }
+        
+        function updateTime(){
+            secondes++;
+            if(secondes == 60){
+                secondes = 0;
+                minutes++;
+                if(minutes == 60){
+                    minutes = 0;
+                    heures++;
+                    if(heures == 24){
+                        heures = 0;
+                    }
+                }
+            }
+            affichageFormatTemps(); 
+        }
+
+        function startTimer(){
+            if(intervale === null){
+                intervale = setInterval(updateTime , 1000);
+            }
+        }
+
+        function stopTimer(){
+            if(intervale !== null){
+                clearInterval(intervale);
+                intervale = null
+            }
+        }
+
+        function resetTimer(){
+            stopTimer();
+            heures = 0 ;
+            minutes = 0 ;
+            secondes = 0 ;
+            affichageFormatTemps();
+        }
+
+        affichageFormatTemps();
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <!-- Custom JS -->
+    <script src="../script.js"></script>
+</body>
+</html>
